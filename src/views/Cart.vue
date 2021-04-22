@@ -1,12 +1,12 @@
-// Home.vue
+// Cart.vue
 <template>
-  <div class="home">
-    <div>我是首页</div>
+  <div class="cart-box">
+    <div>购物车页</div>
   </div>
 </template>
 <script>
 export default {
-  name: "Home",
+  name: "Cart",
 };
 </script>
 <style lang="less" scoped>

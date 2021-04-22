@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition :name="transitionName">
+      <router-view class="router-view" />
+    </transition>
+    <nav-bar></nav-bar>
   </div>
-</template>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+</template><script>
+import navBar from "@/components/NavBar";
+export default {
+  data() {
+    return { transitionName: "slide-left" };
+  },
+  components: { navBar },
+  watch: {
+    $route(to, from) {
+      // 有主级到次级
+      if (to.meta.index > from.meta.index) {
+        this.transitionName = "slide-left";
+        // 向左滑动
+      } else if (to.meta.index < from.meta.index) {
+        // 由次级到主级
+        this.transitionName = "slide-right";
+      } else {
+        this.transitionName = "";
+        //同级无过渡效果
+      }
+    },
+  },
+};
+</script><style lang="less"></style>
