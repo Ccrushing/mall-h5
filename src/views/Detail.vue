@@ -1,12 +1,15 @@
-// Home.vue
 <template>
-  <div class="home">
-    <div>hhhh</div>
+  <div>
+    <s-header :title="'详情'"></s-header>
   </div>
 </template>
 <script>
+import sHeader from "@/components/SimpleHeader";
 export default {
-  name: "Home",
+  name: "Detail",
+  components: {
+    sHeader,
+  },
 };
 </script>
 <style lang="less" scoped>

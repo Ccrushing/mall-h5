@@ -2,7 +2,7 @@
 <template>
   <div class="user-box">
     <div>我的</div>
-    <router-link to="/detail">跳转到详情页</router-link>
+    <router-link to="/detail">跳转到详情页g</router-link>
   </div>
 </template>
 <script>
