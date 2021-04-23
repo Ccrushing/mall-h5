@@ -29,6 +29,14 @@ import sHeader from "@/components/SimpleHeader";
 import { getUserInfo } from "../service/user";
 export default {
   name: "User",
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+    goTo(r) {
+      this.$router.push({ path: r });
+    },
+  },
   components: {
     sHeader,
   },
