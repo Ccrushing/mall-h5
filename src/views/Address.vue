@@ -29,7 +29,7 @@ import sHeader from "@/components/SimpleHeader";
 import { getAddressList } from "../service/address";
 export default {
   components: {
-    Toast,
+    // Toast,
     sHeader,
   },
   data() {

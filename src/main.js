@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import 'lib-flexible/flexible'
 
-import { Button , Form, Field, Toast, Icon, Grid, GridItem, AddressList } from 'vant'
+import { Button , Form, Field, Toast, Icon, Grid, GridItem, AddressList ,AddressEdit} from 'vant'
 
 Vue.use(Button)
 .use(Form)
@@ -15,6 +15,7 @@ Vue.use(Button)
 .use(GridItem)
 .use(Grid)
 .use(AddressList)
+.use(AddressEdit)
 Vue.prototype.$md5 = md5
 Vue.config.productionTip = false
 
