@@ -19,6 +19,13 @@
       </router-link>
     </header>
     <swiper :list="swiperList"></swiper>
+    <!-- 分类栏目 -->
+    <div class="category-list">
+      <div v-for="item in categoryList" v-bind:key="item.categoryId">
+        <img :src="require('../assets/' + item.imgUrl)" />
+        <span>{{ item.name }}</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -32,6 +39,19 @@ export default {
     return {
       isLogin: false,
       swiperList: [],
+
+      categoryList: [
+        { name: "楼楼交友", imgUrl: "jiaoyou.png", categoryId: 100001 },
+        { name: "楼楼家政", imgUrl: "jiazheng.png", categoryId: 100003 },
+        { name: "楼楼水产", imgUrl: "shuichan1.png", categoryId: 100002 },
+        { name: "楼楼租车", imgUrl: "zuche.png", categoryId: 100004 },
+        { name: "楼楼招聘", imgUrl: "pin.png", categoryId: 100005 },
+        { name: "楼楼二手", imgUrl: "ershou.png", categoryId: 100006 },
+        { name: "楼楼宠物", imgUrl: "chongwu.png", categoryId: 100007 },
+        { name: "楼楼外卖", imgUrl: "wm.png", categoryId: 100008 },
+        { name: "楼楼电器", imgUrl: "dianqi.png", categoryId: 100009 },
+        { name: "楼楼充值", imgUrl: "czcz.png", categoryId: 1000010 },
+      ],
     };
   },
   components: {
@@ -51,9 +71,11 @@ export default {
   },
 };
 </script>
+
 <style lang="less" scoped>
 @import "../common/style/mixin";
 .home {
+  // 吸顶头部样式
   .home-header {
     position: fixed;
     left: 0;
@@ -64,18 +86,18 @@ export default {
     padding: 0 15px;
     .boxSizing();
     font-size: 15px;
-    color: #fff;
+    color: rgb(224, 54, 24);
     z-index: 10000;
     .icon-menu {
       color: @primary;
     }
     &.active {
       background: @primary;
-      .icon-menu {
-        color: #fff;
+      .nbmenu2 {
+        color: rgb(246, 244, 250);
       }
       .login {
-        color: #fff;
+        color: rgb(250, 252, 249);
       }
     }
     .header-search {
@@ -85,7 +107,7 @@ export default {
       margin: 10px 0;
       padding: 5px 0;
       color: #232326;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(176, 180, 176, 0.7);
       border-radius: 20px;
       .app-name {
         padding: 0 10px;
@@ -100,7 +122,7 @@ export default {
       }
       .search-title {
         font-size: 12px;
-        color: #666;
+        color: #93a1acb9;
         line-height: 21px;
       }
     }
@@ -110,6 +132,128 @@ export default {
       .van-icon-manager-o {
         font-size: 20px;
         vertical-align: -3px;
+      }
+    }
+  }
+  //分类栏目样式
+  .category-list {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 13px;
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      text-align: center;
+      img {
+        .wh(40px, 40px);
+        margin: 13px auto 8px auto;
+      }
+    }
+  }
+  .good {
+    .good-header {
+      background: #93a1acb9;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: @primary;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .good-box {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      .good-item {
+        .fj();
+        width: 100%;
+        height: 120px;
+        padding: 10px 0;
+        border-bottom: 1px solid #dcdcdc;
+        img {
+          width: 140px;
+          height: 120px;
+          padding: 0 10px;
+          .boxSizing();
+        }
+        .good-info {
+          width: 56%;
+          height: 120px;
+          padding: 5px;
+          text-align: left;
+          .boxSizing();
+          p {
+            margin: 0;
+          }
+          .name {
+            width: 100%;
+            max-height: 40px;
+            line-height: 20px;
+            font-size: 15px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .subtitle {
+            width: 100%;
+            max-height: 20px;
+            padding: 10px 0;
+            line-height: 25px;
+            font-size: 13px;
+            color: #999;
+            overflow: hidden;
+          }
+          .price {
+            color: @primary;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  .floor-list {
+    width: 100%;
+    padding-bottom: 50px;
+    .floor-head {
+      width: 100%;
+      height: 40px;
+      background: #f0ecec;
+    }
+    .floor-content {
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      width: 100%;
+      .boxSizing();
+      .floor-category {
+        width: 50%;
+        padding: 10px;
+        border-right: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+        .boxSizing();
+        &:nth-child(2n) {
+          border-right: none;
+        }
+        p {
+          font-size: 17px;
+          color: #333;
+          &:nth-child(2) {
+            padding: 5px 0;
+            font-size: 13px;
+            color: @primary;
+          }
+        }
+        .floor-products {
+          .fj();
+          width: 100%;
+          img {
+            .wh(65px, 65px);
+          }
+        }
       }
     }
   }
