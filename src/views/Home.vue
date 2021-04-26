@@ -59,7 +59,7 @@
           :key="item.goodsId"
           @click="goToDetail(item)"
         >
-          <img :src="`http://localhost:8080${item.goodsCoverImg}`" />
+          <img :src="`http://121.43.231.185:8080${item.goodsCoverImg}`" />
 
           <div class="good-info">
             <p class="name">{{ item.goodsName }}</p>
@@ -82,7 +82,7 @@
           :key="item.goodsId"
           @click="goToDetail(item)"
         >
-          <img :src="`http://localhost:8080${item.goodsCoverImg}`" />
+          <img :src="`http://121.43.231.185:8080${item.goodsCoverImg}`" />
 
           <div class="good-info">
             <p class="name">{{ item.goodsName }}</p>
@@ -105,7 +105,7 @@
           :key="item.goodsId"
           @click="goToDetail(item)"
         >
-          <img :src="`http://localhost:8080${item.goodsCoverImg}`" />
+          <img :src="`http://121.43.231.185:8080{item.goodsCoverImg}`" />
 
           <div class="good-info">
             <p class="name">{{ item.goodsName }}</p>
@@ -135,33 +135,24 @@ export default {
   data() {
     return {
       headerScroll: false,
-
       isLogin: false,
-
       swiperList: [],
-
       categoryList: [
         {
           name: "楼楼交友",
-
           imgUrl: "jiaoyou.png",
-
           categoryId: 100001,
         },
 
         {
           name: "楼楼家政",
-
           imgUrl: "jiazheng.png",
-
           categoryId: 100003,
         },
 
         {
           name: "楼楼水产",
-
           imgUrl: "shuichan1.png",
-
           categoryId: 100002,
         },
 
@@ -243,27 +234,14 @@ export default {
 
     Toast.loading({
       message: "加载中...",
-
       forbidClick: true,
     });
 
     const { data } = await getHome();
-
-    this.swiperList = data.carousels;
-
-    //轮播图
-
-    this.hotGoods = data.hotGoods;
-
-    // 热门商品
-
-    this.newGoods = data.newGoods;
-
-    // 新品上线
-
-    this.recommendGoods = data.recommendGoods;
-
-    // 最新推荐
+    this.swiperList = data.carousels; //轮播图
+    this.hotGoods = data.hotGoods; // 热门商品
+    this.newGoods = data.newGoods; // 新品上线
+    this.recommendGoods = data.recommendGoods; // 最新推荐
   },
 
   methods: {
